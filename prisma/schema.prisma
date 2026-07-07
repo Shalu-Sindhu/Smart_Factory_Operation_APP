@@ -1,0 +1,162 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  mobile       String   @unique
+  password     String
+  name         String
+  role         String   // "Admin", "Supervisor", "Worker" or "Administrator"
+  status       String   @default("Approved") // "Approved", "Pending", "Rejected"
+  workerId     String?
+  department   String?
+  factoryUnit  String?
+  createdAt    DateTime @default(now())
+}
+
+model Role {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+}
+
+model WorkerProfile {
+  id                 String   @id
+  name               String
+  email              String
+  role               String
+  avatar             String
+  shift              String
+  status             String
+  workstation        String
+  productivityScore  Float
+  attendanceRate     Float
+  completedTasks     Int
+  averageCycleTime   Int
+  recentActivities   Json     // stores array of activities
+  weeklyProductivity Json     // stores weekly productivity
+  activityBreakdown  Json     // stores activity breakdown
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model PasswordResetOTP {
+  id        String   @id @default(uuid())
+  mobile    String
+  otp       String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model LoginHistory {
+  id        String   @id @default(uuid())
+  userId    String
+  mobile    String
+  ipAddress String?
+  userAgent String?
+  status    String   // "SUCCESS", "FAILED"
+  timestamp DateTime @default(now())
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  action     String
+  userId     String?
+  userEmail  String?
+  userMobile String?
+  details    String
+  ipAddress  String?
+  timestamp  DateTime @default(now())
+}
+
+model SupervisorRequest {
+  id          String   @id @default(uuid())
+  workerId    String
+  name        String
+  department  String
+  experience  String
+  reason      String
+  idProof     String?
+  status      String   @default("Pending") // "Pending", "Approved", "Rejected"
+  createdAt   DateTime @default(now())
+}
+
+model Attendance {
+  id        String   @id @default(uuid())
+  workerId  String
+  date      String
+  status    String   // "Present", "Absent", "Late"
+  checkIn   String?
+  checkOut  String?
+}
+
+model Report {
+  id          String   @id
+  reportType  String
+  format      String
+  dateRange   String
+  generatedAt DateTime @default(now())
+  generatedBy String
+}
+
+model Camera {
+  id              String @id
+  name            String
+  zone            String
+  status          String
+  recordingStatus String
+  workstation     String
+  recordingUptime Float
+  healthScore     Float
+  resolution      String
+  fps             Int
+}
+
+model ActivityConfig {
+  id                 String @id
+  name               String
+  code               String
+  sequence           Json   // array of strings
+  cycleTimeThreshold Int
+  detectionRules     Json   // object
+  alertCondition     String
+}
+
+model SystemAlert {
+  id             String  @id
+  cameraName     String
+  workerName     String?
+  zone           String
+  type           String
+  severity       String
+  timestamp      String
+  status         String
+  message        String
+  cameraSnapshot String?
+}
+
+model ActivityLog {
+  id        String @id
+  timestamp String
+  module    String
+  action    String
+  user      String
+  details   String
+  severity  String
+}

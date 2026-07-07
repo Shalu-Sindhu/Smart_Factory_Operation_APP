@@ -1,0 +1,6 @@
+{
+  "name": "Factory Operations Monitor",
+  "description": "A modern AI-powered factory operations monitoring web application for real-time tracking, camera analytics, and worker performance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
