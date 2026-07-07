@@ -104,7 +104,7 @@ Smart_Factory_Operation_APP/
 
 ## 1. Clone the Repository
 bash
-git clone https://github.com/yourusername/Smart_Factory_Operation_APP.git
+git clone https://github.com/Shalu-Sindhu/Smart_Factory_Operation_APP.git
 
 ## 2. Navigate to the Project
 bash
