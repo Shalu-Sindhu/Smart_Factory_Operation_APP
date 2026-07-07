@@ -202,9 +202,7 @@ npm run dev
 
 # Application Screenshots
 
-<img width="404" height="1280" alt="image" src="https://github.com/user-attachments/assets/a83480f2-f23b-463f-b3f9-5b0603ad1514" />
-
-
+<img width="218" height="748" alt="image" src="https://github.com/user-attachments/assets/e1dd11c9-3cfe-4e1c-824b-d0f5157bb8a1" />
 
 # Future Enhancements
 
