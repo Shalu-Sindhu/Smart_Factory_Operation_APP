@@ -102,43 +102,9 @@ Smart_Factory_Operation_APP/
 
 # Getting Started
 
-## 1. Clone the Repository
+##  Clone the Repository
 bash
 git clone https://github.com/Shalu-Sindhu/Smart_Factory_Operation_APP.git
-
-## 2. Navigate to the Project
-bash
-cd Smart_Factory_Operation_APP
-
-## 3. Install Dependencies
-
-bash
-npm install
-
-## 4. Configure Environment Variables
-
-Create a `.env` file in the project root.
-
-Example:
-
-.env
-DATABASE_URL=postgresql://username:password@localhost:5432/factory_db
-JWT_SECRET=your_secret_key
-
-## 5. Generate Prisma Client
-
-bash
-npx prisma generate
-
-## 6. Push Database Schema
-
-bash
-npx prisma db push
-
-## 7. Start the Development Server
-
-bash
-npm run dev
 
 # User Roles
 
